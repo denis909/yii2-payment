@@ -32,7 +32,7 @@ class PayoutEvent extends \yii\base\Event
         Assert::notEmpty($this->account, 'Payout account is empty.');
     }
 
-    public function getResult() ? PayoutResult
+    public function getResult() : PayoutResult
     {
         return $this->_result;
     }
