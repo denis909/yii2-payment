@@ -7,7 +7,7 @@ interface PayoutResultInterface
 
     public function getResponse() : array;
 
-    public function setResponse(array $result);
+    public function setResponse(array $response);
 
     public function getIsSuccess() : bool;
 
