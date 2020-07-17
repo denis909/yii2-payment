@@ -2,7 +2,7 @@
 
 namespace denis909\yii;
 
-abstract class PayoutResultBase extends \yii\base\Component implements PayoutResultInterface
+abstract class PayoutResult extends \yii\base\Component implements PayoutResultInterface
 {
 
     protected $_resonse = [];
