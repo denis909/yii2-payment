@@ -13,6 +13,8 @@ abstract class BasePaymentEvent extends \yii\base\Event
 
     public abstract function getErrorMessage() : ?string;
 
+    public abstract function getTransactionId() : ?string;
+
     public function getResponse() : array
     {
         if ($this->_response === null)

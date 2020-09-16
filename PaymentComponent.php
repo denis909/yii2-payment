@@ -2,6 +2,7 @@
 
 namespace denis909\yii;
 
+use Closure;
 use yii\helpers\ArrayHelper;
 
 class PaymentComponent extends \yii\base\Component
@@ -15,12 +16,32 @@ class PaymentComponent extends \yii\base\Component
 
     const EVENT_WITHDRAW_SERVICE_LIST = 'withdraw-service-list';
 
+    public $withdrawCallback;
+
+    public $chargeCallback;
+
     protected $_chargeServiceList;
 
     protected $_withdrawServiceList;
 
     public function charge(ChargeEvent $event)
     {
+        $chargeCallback = $this->chargeCallback;
+
+        if ($chargeCallback)
+        {
+            if ($chargeCallback instanceof Closure)
+            {
+                $chargeCallback($event);
+
+                return;
+            }
+
+            call_user_func($chargeCallback, $event);
+
+            return;
+        }
+
         $this->trigger(static::EVENT_CHARGE, $event);
 
         if (!$event->handled)
@@ -57,6 +78,22 @@ class PaymentComponent extends \yii\base\Component
 
     public function withdraw(WithdrawEvent $event)
     {
+        $withdrawCallback = $this->withdrawCallback;
+
+        if ($withdrawCallback)
+        {
+            if ($withdrawCallback instanceof Closure)
+            {
+                $withdrawCallback($event);
+
+                return;
+            }
+
+            call_user_func($withdrawCallback, $event);
+
+            return;
+        }
+
         $this->trigger(static::EVENT_WITHDRAW, $event);
 
         if (!$event->handled)
