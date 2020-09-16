@@ -7,6 +7,12 @@ abstract class BasePaymentEvent extends \yii\base\Event
 
     protected $_response;    
 
+    public abstract function isSuccess() : bool;
+
+    public abstract function getRedirectUrl() : ?string;
+
+    public abstract function getErrorMessage() : ?string;
+
     public function getResponse() : array
     {
         if ($this->_response === null)
@@ -25,6 +31,16 @@ abstract class BasePaymentEvent extends \yii\base\Event
     public function setResponse(array $response)
     {
         $this->_response = $response;
+    }
+
+    public function isRedirect() : bool
+    {
+        return $this->getRedirectUrl() ? true : false;
+    }
+
+    public function isError() : bool
+    {
+        return $this->getErrorMessage() ? true : false;
     }
 
 }
