@@ -2,9 +2,6 @@
 
 namespace denis909\yii;
 
-abstract class ChargeEvent extends BasePaymentEvent
+abstract class ChargeEvent extends BasePaymentEvent implements ChargeEventInterface
 {
-
-    abstract public function getIsNotEnoughFunds() : bool;
-
 }

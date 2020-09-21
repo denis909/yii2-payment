@@ -2,7 +2,7 @@
 
 namespace denis909\yii;
 
-abstract class BasePaymentEvent extends \yii\base\Event
+abstract class BasePaymentEvent extends \yii\base\Event implements PaymentEventInterface
 {
 
     protected $_response;    
@@ -43,6 +43,11 @@ abstract class BasePaymentEvent extends \yii\base\Event
     public function isError() : bool
     {
         return $this->getErrorMessage() ? true : false;
+    }
+
+    public function setValidationErrors(array $errors)
+    {
+        $this->_response = ['validationErrors' => $errors];
     }
 
 }

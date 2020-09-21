@@ -2,7 +2,7 @@
 
 namespace denis909\yii;
 
-interface PaymentProviderInterface
+interface PaymentServiceInterface
 {
 
     public function balance(string $currency);
