@@ -13,7 +13,13 @@ abstract class BasePaymentEvent extends \yii\base\Event implements PaymentEventI
 
     public abstract function getErrorMessage() : ?string;
 
-    public abstract function getTransactionId() : ?string;
+    public abstract function getTransactionId();
+
+    public abstract function getOrderId();
+
+    public abstract function getAmount();
+
+    public abstract function getCurrency();
 
     public function getResponse() : array
     {
@@ -47,7 +53,12 @@ abstract class BasePaymentEvent extends \yii\base\Event implements PaymentEventI
 
     public function setValidationErrors(array $errors)
     {
-        $this->_response = ['validationErrors' => $errors];
+        if (!$this->_response)
+        {
+            $this->_response = [];
+        }
+
+        $this->_response['validationErrors'] = $errors;
     }
 
 }

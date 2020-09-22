@@ -11,7 +11,7 @@ interface PaymentEventInterface
 
     public function getErrorMessage() : ?string;
 
-    public function getTransactionId() : ?string;
+    public function getTransactionId();
 
     public function getResponse() : array;
 
@@ -22,5 +22,11 @@ interface PaymentEventInterface
     public function isError() : bool;
 
     public function setValidationErrors(array $errors);
+
+    public function getOrderId();
+
+    public function getAmount();
+
+    public function getCurrency();
 
 }
