@@ -2,7 +2,7 @@
 
 namespace denis909\yii;
 
-abstract class WithdrawEvent extends BasePaymentEvent implements WithdrawEventInterface
+abstract class Withdraw extends BasePayment implements WithdrawInterface
 {
 
     abstract public function getIsNotEnoughFunds() : bool;

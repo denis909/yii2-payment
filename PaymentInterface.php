@@ -2,7 +2,7 @@
 
 namespace denis909\yii;
 
-interface PaymentEventInterface
+interface PaymentInterface
 {
 
     public function isSuccess() : bool;

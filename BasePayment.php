@@ -2,7 +2,7 @@
 
 namespace denis909\yii;
 
-abstract class BasePaymentEvent extends \yii\base\Event implements PaymentEventInterface
+abstract class BasePayment extends \yii\base\Component implements PaymentInterface
 {
 
     protected $_response;    
