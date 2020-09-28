@@ -2,10 +2,12 @@
 
 namespace denis909\yii;
 
-abstract class BasePayment extends \yii\base\Component implements PaymentInterface
+use yii\helpers\ArrayHelper;
+
+abstract class PaymentResult extends \yii\base\Component implements PaymentResultInterface
 {
 
-    protected $_response;    
+    protected $_response;
 
     public abstract function isSuccess() : bool;
 
@@ -36,9 +38,11 @@ abstract class BasePayment extends \yii\base\Component implements PaymentInterfa
         return $this->_response;
     }
 
-    public function setResponse(array $response)
+    public function setResponse(array $response) : PaymentResultInterface
     {
         $this->_response = $response;
+
+        return $this;
     }
 
     public function isRedirect() : bool
@@ -51,14 +55,9 @@ abstract class BasePayment extends \yii\base\Component implements PaymentInterfa
         return $this->getErrorMessage() ? true : false;
     }
 
-    public function setValidationErrors(array $errors)
+    public function isContent() : bool
     {
-        if (!$this->_response)
-        {
-            $this->_response = [];
-        }
-
-        $this->_response['validationErrors'] = $errors;
+        return $this->getContent() ? true : false;
     }
 
 }

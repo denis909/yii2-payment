@@ -5,6 +5,6 @@ namespace denis909\yii;
 interface ChargeServiceInterface extends PaymentServiceInterface
 {
 
-    public function charge(array $params) : ChargeInterface;
+    public function charge(array $params) : ChargeResultInterface;
 
 }

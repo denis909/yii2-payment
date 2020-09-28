@@ -2,7 +2,7 @@
 
 namespace denis909\yii;
 
-interface PaymentInterface
+interface PaymentResultInterface
 {
 
     public function isSuccess() : bool;
@@ -15,18 +15,20 @@ interface PaymentInterface
 
     public function getResponse() : array;
 
-    public function setResponse(array $response);
+    public function setResponse(array $response) : PaymentResultInterface;
 
     public function isRedirect() : bool;
 
     public function isError() : bool;
-
-    public function setValidationErrors(array $errors);
 
     public function getOrderId();
 
     public function getAmount();
 
     public function getCurrency();
+
+    public function isContent() : bool;
+
+    public function getContent() : ?string;
 
 }

@@ -2,7 +2,7 @@
 
 namespace denis909\yii;
 
-interface WithdrawInterface extends PaymentInterface
+interface WithdrawResultInterface extends PaymentResultInterface
 {
 
     public function getIsNotEnoughFunds() : bool;
